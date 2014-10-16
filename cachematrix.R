@@ -13,26 +13,26 @@ makeCacheMatrix <- function(x = matrix()) {
   get <- function() {
     x
   }
-  setSolve <- function(solve) {
+  setMat <- function(solve) {
     s <<- solve
   }
-  getSolve <- function() {
+  getMat <- function() {
     s
   }
-  list(set = set, get = get, setSolve = setSolve, getSolve = getSolve)
+  list(set = set, get = get, setMat = setMat, getMat = getMat)
 }
 
 
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-  s <- x$getSolve()
+  s <- x$getMat()
   if(!is.null(s)) {
     message("Cached data")
     return(s)
   }
   data <- x$get()
   s <- solve(data, ...)
-  x$setSolve(s)
+  x$setMat(s)
   s
 }
