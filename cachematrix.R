@@ -32,7 +32,7 @@ cacheSolve <- function(x, ...) {
     return(s)
   }
   data <- x$get()
-  s <- solve(data, ...)
+  s <- solve(data, ...) %*% data
   x$setMat(s)
   s
 }
